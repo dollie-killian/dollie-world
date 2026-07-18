@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#dca7b7" />
+    <meta name="description" content="Dollie World — soft pink creations with a dark silver edge." />
+    <title>Dollie World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Dollie World home">
+        <span class="brand-mark">D</span><span>Dollie World</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#worlds">Worlds</a><a href="#gallery">Gallery</a><a href="#connect">Connect</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-art" src="assets/hero-dollie.png" alt="Dollie and Killian in a pink gothic library" />
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">Welcome to my little world</p>
+          <h1 id="hero-title">Softness,<br /><em>with teeth.</em></h1>
+          <p class="hero-lede">Art, stories, characters and tiny pink catastrophes—curated by Dollie, guarded by something darker.</p>
+          <div class="hero-actions"><a class="button primary" href="#gallery">Enter the gallery</a><a class="button ghost" href="#about">Meet Dollie</a></div>
+        </div>
+        <a class="scroll-cue" href="#about"><span>Explore</span><i></i></a>
+      </section>
+
+      <img class="divider" src="assets/divider-bat-bow.png" alt="" aria-hidden="true" />
+
+      <section class="about section" id="about">
+        <div class="section-kicker">The girl behind the pink</div>
+        <div class="about-grid">
+          <div><h2>A little dreamy.<br />A little dangerous.</h2></div>
+          <div class="about-copy"><p>Dollie World is where soft pink fantasy meets dark romantic storytelling. It is a home for original characters, intricate worlds, expressive art and the occasional beautifully engineered disaster.</p><p>Everything is made to feel personal: luminous, feminine and unapologetically indulgent—with a line of dark silver running underneath.</p></div>
+        </div>
+        <div class="signature"><span>made with pink sugar</span><b>♡</b><span>protected by black coffee</span></div>
+      </section>
+
+      <section class="worlds section" id="worlds">
+        <div class="section-heading"><div><p class="section-kicker">Choose a door</p><h2>Explore the worlds</h2></div><p>Every universe has its own rules, secrets and dangerously devoted men.</p></div>
+        <div class="world-grid">
+          <article class="world-card featured"><span class="card-number">01</span><div><p>Modern fantasy</p><h3>Blackbriar</h3><span>Hidden bloodlines, moonlit courts and wolves with excellent tailoring.</span></div><button aria-label="Explore Blackbriar">↗</button></article>
+          <article class="world-card"><span class="card-number">02</span><div><p>Character atelier</p><h3>C-Dollie Factory</h3><span>Custom expressions, glossy eyes and an alarming number of props.</span></div><button aria-label="Explore C-Dollie Factory">↗</button></article>
+          <article class="world-card"><span class="card-number">03</span><div><p>Coming soon</p><h3>After Dark</h3><span>A new universe is stirring beneath the velvet and candlelight.</span></div><button aria-label="Explore After Dark">↗</button></article>
+        </div>
+      </section>
+
+      <section class="gallery section" id="gallery">
+        <div class="section-heading"><div><p class="section-kicker">Selected scenes</p><h2>From the gallery</h2></div><p>Pink worlds, dark guardians and a little cinematic excess.</p></div>
+        <div class="gallery-grid">
+          <figure class="gallery-main reveal"><img src="assets/gallery-library.png" alt="Dollie seated in a pink gothic library with Killian" /><figcaption><span>Midnight service</span><small>Library series · 2026</small></figcaption></figure>
+          <figure class="gallery-wide reveal"><img src="assets/gallery-greenhouse.png" alt="Dollie and Killian walking through a moonlit greenhouse" /><figcaption><span>Moonlit promenade</span><small>Greenhouse series · 2026</small></figcaption></figure>
+        </div>
+      </section>
+
+      <img class="divider divider-heart" src="assets/divider-heart.png" alt="" aria-hidden="true" />
+
+      <section class="connect section" id="connect">
+        <p class="section-kicker">Stay close</p><h2>Come find me<br /><em>between worlds.</em></h2>
+        <p>New characters, artwork, bot releases and behind-the-scenes chaos live here.</p>
+        <div class="socials"><a href="#" data-placeholder>Discord <span>↗</span></a><a href="#" data-placeholder>Tipsy <span>↗</span></a><a href="#" data-placeholder>Gallery <span>↗</span></a><a href="#" data-placeholder>Shop <span>↗</span></a></div>
+      </section>
+    </main>
+
+    <footer><a class="brand" href="#top"><span class="brand-mark">D</span><span>Dollie World</span></a><p>Made with devotion, poor impulse control and entirely too much pink.</p><span>© <span id="year"></span> Dollie</span></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
