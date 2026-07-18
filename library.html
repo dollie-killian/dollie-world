@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Library — Dollie World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="inner-page library-page">
+    <div class="noise"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">D</span><span>Dollie World</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+      <nav id="site-nav"><a href="about.html">About</a><a href="worlds.html">Worlds</a><a href="shop.html">Shop</a><a href="contact.html">Contact</a></nav>
+    </header>
+    <main class="page-main">
+      <section class="library-intro section"><p class="section-kicker">Dollie &amp; Killian</p><h1>Our little<br /><em>Library.</em></h1><p>Portraits, quiet disasters, stolen moments and documented evidence that the brooding archivist is, in fact, a devoted simp for his wife.</p></section>
+      <img class="divider" src="assets/divider-bat-bow.png" alt="" />
+      <section class="memory-gallery section" aria-label="Dollie and Killian gallery">
+        <div class="memory-grid">
+          <!-- TO ADD A PICTURE: duplicate a memory-card block, upload the image into assets/library, then change its src, alt and caption. -->
+          <figure class="memory-card memory-tall"><img src="assets/library/dollie-killian-library-night.png" alt="Dollie resting with Killian in their candlelit gothic library" /><figcaption><span>After midnight</span><small>The Library · Dollie &amp; Killian</small></figcaption></figure>
+          <figure class="memory-card memory-wide"><img src="assets/hero-dollie.png" alt="Dollie and Killian in the Library of Dreams" /><figcaption><span>The Library of Dreams</span><small>Home · Dollie &amp; Killian</small></figcaption></figure>
+          <!-- Future picture example:
+          <figure class="memory-card"><img src="assets/library/YOUR-IMAGE.png" alt="Describe Dollie and Killian here" /><figcaption><span>Your title</span><small>Your caption</small></figcaption></figure>
+          -->
+          <div class="memory-placeholder"><span>＋</span><strong>A new memory belongs here</strong><small>Upload the next Dollie &amp; Killian picture into <b>assets/library</b>, then duplicate the prepared gallery block in <b>library.html</b>.</small></div>
+        </div>
+      </section>
+    </main>
+    <footer><a class="brand" href="index.html"><span class="brand-mark">D</span><span>Dollie World</span></a><p>“The most beautiful dreams come from pain.”</p><span>© <span id="year"></span> Dollie World · Please do not release the characters from the basement</span></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
