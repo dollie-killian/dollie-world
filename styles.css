@@ -60,3 +60,62 @@
 
 /* Dollie and Killian picture Library. */
 .library-page{background:#211b20;color:white}.library-intro{padding-top:clamp(140px,14vw,210px);padding-bottom:60px}.library-intro h1{font-size:clamp(62px,9vw,132px);line-height:.76}.library-intro>p:last-child{max-width:650px;color:#c8bbc2;line-height:1.8;margin:38px 0 0}.library-page>.page-main>.divider{mix-blend-mode:screen;opacity:.82}.memory-gallery{padding-top:60px}.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;align-items:start}.memory-card{position:relative;margin:0;min-height:520px;overflow:hidden;background:#171316}.memory-card img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}.memory-card:hover img{transform:scale(1.025)}.memory-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 58%,rgba(15,10,13,.9))}.memory-card figcaption{position:absolute;z-index:2;left:28px;right:28px;bottom:26px}.memory-card figcaption span{display:block;font-family:var(--serif);font-size:32px}.memory-card figcaption small{display:block;margin-top:6px;text-transform:uppercase;letter-spacing:.16em;color:var(--pink-200);font-size:9px}.memory-tall{min-height:760px}.memory-wide{min-height:500px}.memory-wide img{object-position:center}.memory-placeholder{min-height:280px;border:1px dashed rgba(220,167,183,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:44px;color:#cbbdc5;background:rgba(255,255,255,.025)}.memory-placeholder>span{font-family:var(--serif);font-size:52px;color:var(--pink-300)}.memory-placeholder strong{font-family:var(--serif);font-size:27px;font-weight:500;color:white;margin:6px 0 12px}.memory-placeholder small{max-width:420px;line-height:1.7}.memory-placeholder b{color:var(--pink-300);font-weight:500}@media(max-width:760px){.library-intro{padding-top:115px}.memory-grid{grid-template-columns:1fr}.memory-card,.memory-tall,.memory-wide{min-height:520px}}
+
+/* Mobile composition: treat the hero and archive entrances as deliberate covers. */
+@media(max-width:760px){
+  body{overflow-x:hidden}
+  .site-header{padding:0 20px}
+  .brand{gap:10px;font-size:21px}
+  .brand-mark{width:31px;height:31px;font-size:18px}
+
+  .hero{height:100svh;min-height:680px;max-height:860px;background:#120d11}
+  .hero::before{inset:0;background:url("assets/hero-dollie.png") 36% center/cover no-repeat;filter:blur(16px) brightness(.28);transform:scale(1.08)}
+  .hero-art{inset:0;width:100%;height:100%;object-fit:cover;object-position:36% center;filter:brightness(.74)}
+  .hero-shade{background:linear-gradient(180deg,rgba(13,9,12,.18) 0%,rgba(13,9,12,.08) 28%,rgba(13,9,12,.76) 59%,rgba(13,9,12,.98) 100%),linear-gradient(90deg,rgba(13,9,12,.42),transparent 72%)}
+  .hero-copy{left:24px;right:24px;bottom:44px;top:auto;transform:none;width:auto}
+  .hero .eyebrow{margin:0 0 13px;font-size:9px}
+  .hero-copy h1{font-size:clamp(52px,16vw,68px);line-height:.78}
+  .hero-lede{font-size:13px;line-height:1.75;margin:25px 0 0;max-width:34em}
+
+  .divider{width:94vw;margin:16px auto 0}
+  .section{padding-top:64px;padding-bottom:68px}
+  .home-galleries{padding-top:48px}
+  .section-heading{gap:16px;margin-bottom:30px}
+  .section-heading h2{font-size:48px}
+  .section-heading>p{font-size:13px;line-height:1.65;margin:0}
+
+  .portal-grid{gap:18px}
+  .portal-card{min-height:0;aspect-ratio:16/10}
+  .portal-card:first-child img,.portal-card img{object-position:center}
+  .portal-card>span{left:22px;right:22px;bottom:18px}
+  .portal-card strong{font-size:38px;line-height:.9}
+  .portal-card i{padding-bottom:2px}
+
+  .subhero{height:min(680px,82svh)}
+  .subhero-copy{bottom:38px}
+  .subhero h1{font-size:50px}
+  .subhero-copy>p:last-child{font-size:13px;line-height:1.65;margin-top:22px}
+
+  .archive-heading,.library-intro,.house-heading{padding-top:112px;padding-bottom:52px}
+  .archive-heading h1,.library-intro h1{font-size:58px}
+  .archive-heading>p:last-child,.library-intro>p:last-child{font-size:13px;margin-top:26px}
+  .character-filters{gap:7px;margin-bottom:28px}
+  .character-filters button{padding:11px 13px}
+  .character-image{height:auto;aspect-ratio:3/4}
+  .character-info{padding:22px}
+  .character-info h2{font-size:36px}
+  .character-info>span{font-size:13px}
+  .memory-gallery{padding-top:42px}
+  .memory-card,.memory-tall,.memory-wide{min-height:0;aspect-ratio:4/5}
+  .memory-wide{aspect-ratio:4/3}
+  .memory-placeholder{min-height:230px;padding:30px 22px}
+  .house-character>div{height:auto;aspect-ratio:3/4}
+  footer{padding:38px 24px}
+}
+
+@media(max-width:380px){
+  .brand{font-size:19px}
+  .hero-copy h1{font-size:50px}
+  .hero-lede{font-size:12px}
+  .portal-card strong{font-size:34px}
+}
