@@ -2,97 +2,158 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#171316" />
-    <meta name="description" content="Enter The Hunt: a modern hidden society ruled by four ancient werewolf Houses." />
-    <title>The Hunt — Dollie World</title>
+    <meta name="description" content="Explore The Hunt, a modern fantasy world where werewolves live secretly beside humanity under the rule of four powerful Houses." />
+    <title>The Hunt — The Dream Library</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="atlas.css" />
+    <style>
+      .interactive-map { position: relative; overflow: hidden; }
+      .interactive-map > img { display: block; width: 100%; height: auto; }
+      .map-region { position: absolute; z-index: 2; display: grid; place-items: center; width: 22%; min-height: 18%; padding: 1rem; border: 1px solid transparent; color: inherit; text-align: center; text-decoration: none; transition: background 180ms ease, border-color 180ms ease, backdrop-filter 180ms ease, transform 180ms ease; }
+      .map-region span { display: grid; gap: 0.25rem; padding: 0.75rem 1rem; opacity: 0; background: rgba(20, 16, 19, 0.88); box-shadow: 0 1rem 3rem rgba(0,0,0,.32); transition: opacity 180ms ease; }
+      .map-region small { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
+      .map-region strong { font-family: "Cormorant Garamond", serif; font-size: clamp(1.3rem,2.5vw,2rem); }
+      .map-region em { font-size: .72rem; font-style: normal; opacity: .72; }
+      .map-region:hover, .map-region:focus-visible { border-color: rgba(255,255,255,.42); background: rgba(255,255,255,.08); backdrop-filter: blur(2px); transform: translateY(-2px); }
+      .map-region:hover span, .map-region:focus-visible span { opacity: 1; }
+      .map-region-viremont { left: 6%; top: 10%; }
+      .map-region-blackbriar { left: 39%; top: 8%; }
+      .map-region-fairborne { left: 20%; top: 50%; }
+      .map-region-solas { left: 61%; top: 44%; }
+      .map-location { position: absolute; z-index: 4; display: flex; align-items: center; gap: .55rem; color: #fff; text-decoration: none; transform: translate(-50%,-50%); }
+      .map-location-dot { display: block; width: .8rem; height: .8rem; border: 2px solid #fff; border-radius: 50%; background: #171316; box-shadow: 0 0 0 .35rem rgba(255,255,255,.13), 0 0 1.4rem rgba(255,255,255,.55); }
+      .map-location-label { display: none; min-width: max-content; padding: .55rem .7rem; background: rgba(20,16,19,.93); font-size: .7rem; line-height: 1.35; }
+      .map-location-label strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 1rem; }
+      .map-location:hover .map-location-label, .map-location:focus-visible .map-location-label { display: block; }
+      .map-location-eldermere { left: 56%; top: 33%; }
+      .map-location-elyndor { left: 19%; top: 31%; }
+      .map-location-valoria { left: 37%; top: 70%; }
+      .map-location-solrean { left: 78%; top: 64%; }
+      .map-hd-button { position: absolute; right: 1rem; bottom: 1rem; z-index: 5; padding: .85rem 1.1rem; border: 1px solid rgba(255,255,255,.35); background: rgba(20,16,19,.88); color: #fff; font: inherit; cursor: pointer; }
+      .map-hd-button:hover, .map-hd-button:focus-visible { background: rgba(20,16,19,1); }
+      @media (max-width: 760px) {
+        .map-region { padding: 0; border: 0; background: transparent; }
+        .map-region span { display: none; }
+        .map-location-label { display: none !important; }
+        .map-location-dot { width: .65rem; height: .65rem; }
+        .map-hd-button { position: static; width: 100%; border-top: 1px solid rgba(255,255,255,.2); }
+      }
+    </style>
   </head>
   <body class="inner-page hunt-page atlas-page">
     <div class="noise" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="brand" href="index.html"><span class="brand-mark">D</span><span>Dollie World</span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">D</span><span>The Dream Library</span></a>
       <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
-      <nav id="site-nav" aria-label="Main navigation"><a href="about.html">About</a><a class="active" href="worlds.html">Worlds</a><a href="shop.html">Shop</a><a href="contact.html">Contact</a></nav>
+      <nav id="site-nav" aria-label="Main navigation"><a class="active" href="worlds.html">Worlds</a><a href="characters.html">Characters</a><a href="gallery.html">Gallery</a><a href="glossary.html">Glossary</a><a href="about.html">About</a><a href="contact.html">Connect</a></nav>
     </header>
-
     <main class="page-main">
       <section class="atlas-hero">
         <img src="assets/worlds/the-hunt/hunt-hero.png" alt="The four modern territories of The Hunt beneath the full moon" />
         <div class="atlas-hero-shade"></div>
         <div class="atlas-hero-copy">
-          <div class="breadcrumbs"><a href="worlds.html">Worlds</a><span>›</span><strong>The Hunt</strong></div>
-          <p class="eyebrow">World 01 · Modern fantasy · 2030</p>
-          <h1>Four Houses.<br /><em>One buried history.</em></h1>
-          <p>Werewolves live beside humanity in a hidden modern society of corporations, universities, old blood and laws whose original rites have been forgotten.</p>
-          <a class="atlas-button" href="#world-map">Open the atlas <span>↓</span></a>
+          <div class="breadcrumbs"><a href="worlds.html">Worlds</a><span aria-hidden="true">›</span><strong>The Hunt</strong></div>
+          <p class="eyebrow">World 01 · Modern fantasy · Set in 2030</p>
+          <h1>Four Houses.<br /><em>One history buried alive.</em></h1>
+          <p>Werewolves live beside humanity, hidden behind corporate empires, private institutions, inherited power, and laws stripped of their original meaning. The world moved forward. Their instincts did not.</p>
+          <a class="atlas-button" href="#understand-the-hunt">Enter The Hunt <span aria-hidden="true">↓</span></a>
         </div>
       </section>
-
-      <section class="atlas-intro section">
-        <p class="section-kicker">The concealed world</p>
+      <section class="atlas-intro section" id="understand-the-hunt">
+        <p class="section-kicker">Understanding the world</p>
         <div>
           <h2>Old blood.<br /><em>Modern power.</em></h2>
           <div class="atlas-intro-copy">
-            <p>The year is 2030. House authority moves through boardrooms, hospitals, private universities and guarded highways—not medieval courts. Beneath it all, instinct still remembers what history has buried.</p>
-            <dl><div><dt>Population</dt><dd>20% werewolf</dd></div><div><dt>Seat of rule</dt><dd>Eldermere</dd></div><div><dt>Ruling powers</dt><dd>Four Houses</dd></div></dl>
+            <p>The year is 2030. Werewolves make up roughly twenty percent of the global population, but their existence remains concealed from ordinary human society through secrecy, political agreements, and institutions built to keep both worlds apart.</p>
+            <p>Their hidden society is divided among four ruling Houses: powerful bloodlines that govern separate territories, control major institutions, and preserve laws older than anyone still remembers.</p>
+            <p>They no longer rule from castles. Their influence moves through corporations, hospitals, universities, private estates, and guarded roads. Their authority changed its clothes; the instincts beneath it did not.</p>
+            <p>History survives in fragments. Law preserves rituals whose original purpose has been forgotten. Bloodlines still carry gifts their heirs were never taught to recognise.</p>
+            <dl><div><dt>Werewolf population</dt><dd>Approximately 20% worldwide</dd></div><div><dt>Political centre</dt><dd>Eldermere, the capital of Blackbriar territory and the current seat of central werewolf rule</dd></div><div><dt>Ruling Houses</dt><dd>Blackbriar · Viremont · Fairborne · Solas</dd></div></dl>
           </div>
         </div>
       </section>
-
       <section class="lore-entry section">
-        <div class="lore-entry-art"><img loading="lazy" src="assets/worlds/the-hunt/lore/05-covenant-of-eight.webp" alt="The Covenant of Eight beneath the moon" /></div>
+        <div class="lore-entry-art"><img loading="lazy" src="assets/worlds/the-hunt/lore/05-covenant-of-eight.webp" alt="The Covenant of Eight gathered beneath the moon" /></div>
         <div class="lore-entry-copy">
-          <p class="section-kicker">Creation · Religion · Buried history</p>
+          <p class="section-kicker">Origins · Religion · Forgotten history</p>
           <h2>The moon remembers<br /><em>what law forgot.</em></h2>
-          <p>Enter the illustrated world book: Lunaerie’s first blessing, the Night of Open Jaws, the Covenant of Eight, the Hollow Crowns and the hidden inheritance moving through 2030.</p>
-          <a class="atlas-button" href="hunt-lore.html">Open the lore archive <span>↗</span></a>
+          <p>The laws governing werewolf society began as sacred rites. Centuries of political ambition slowly turned belief into regulation, tradition into obligation, and history into something carefully edited by those in power.</p>
+          <p>The lore archive follows Lunaerie’s first blessing, the rise of the ruling bloodlines, the Covenant of Eight, the fall of the Alpha Kings, and the forgotten True Luna families whose inheritance still moves quietly through the modern world.</p>
+          <p>Begin here to understand why the Houses rule, what their laws once meant, and which parts of the official history were deliberately buried.</p>
+          <a class="atlas-button" href="hunt-lore.html">Read The Hunt’s history <span aria-hidden="true">↗</span></a>
         </div>
       </section>
-
+      <section class="world-directory section">
+        <div class="section-heading"><div><p class="section-kicker">Explore The Hunt</p><h2>Follow every<br /><em>thread.</em></h2></div><p>The Hunt is more than one story. Explore the people, territories, customs, histories, and concealed records connecting its four ruling Houses.</p></div>
+        <div class="world-directory-grid">
+          <a href="hunt-characters.html"><small>People · Relationships · Bloodlines</small><strong>Meet the characters</strong><span>Meet the heirs, rulers, scholars, attendants, outsiders, and hidden descendants quietly changing the future of the territories. ↗</span></a>
+          <a href="hunt-lore.html"><small>History · Religion · Government</small><strong>Read the lore</strong><span>Learn how werewolf society began, how it is governed, and which forgotten events continue to shape the present. ↗</span></a>
+          <a href="hunt-locations.html"><small>Territories · Cities · Estates</small><strong>Explore the locations</strong><span>Visit the four territories, their capitals, estates, forests, institutions, and concealed gathering places. ↗</span></a>
+          <a href="hunt-glossary.html"><small>Language · Customs · Biology</small><strong>Consult the glossary</strong><span>Understand the ranks, instincts, traditions, relationships, and specialised terms used throughout the world. ↗</span></a>
+          <a href="hunt-secrets.html"><small>Clues · Disputed history · Hidden truths</small><strong>Unseal the hidden records</strong><span>Follow concealed bloodlines, incomplete documents, and clues that challenge the history accepted by the ruling Houses. ↗</span></a>
+          <a href="hunt-gallery.html"><small>Portraits · Maps · Visual archives</small><strong>View the collection</strong><span>Browse character portraits, political maps, estates, cities, relics, ceremonies, and other visual records from The Hunt. ↗</span></a>
+        </div>
+      </section>
       <section class="atlas-map-section section" id="world-map">
-        <div class="section-heading light-heading"><div><p class="section-kicker">Political atlas · Public record</p><h2>The four<br /><em>territories.</em></h2></div><p>Blackbriar rules the inland heart. Viremont guards the western sea. Fairborne holds the southern valleys. Solas remains quiet in the volcanic east.</p></div>
-        <button type="button" class="atlas-image atlas-image-wide" data-lightbox="assets/worlds/the-hunt/political-map.png" data-title="The Four Territories — Political Map" aria-label="Open the Four Territories map in HD">
-          <img src="assets/worlds/the-hunt/political-map.png" alt="Political map of the four werewolf House territories" />
-          <span>Open full HD map <b>↗</b></span>
-        </button>
+        <div class="section-heading light-heading"><div><p class="section-kicker">Political atlas · Four territories</p><h2>A hidden society<br /><em>divided by blood.</em></h2></div><p>Werewolf society is divided into four territories, each governed by one ruling House. Select a territory to enter its archive, or open the complete political map in high resolution.</p></div>
+        <div class="interactive-map">
+          <img src="assets/worlds/the-hunt/political-map.png" alt="Political map showing the territories of Houses Viremont, Blackbriar, Fairborne, and Solas" />
+          <a class="map-region map-region-viremont" href="house-viremont.html" aria-label="Explore House Viremont and its western territory"><span><small>Western territory</small><strong>House Viremont</strong><em>Elyndor · Coast · Commerce</em></span></a>
+          <a class="map-region map-region-blackbriar" href="house-blackbriar.html" aria-label="Explore House Blackbriar and its inland territory"><span><small>Inland territory</small><strong>House Blackbriar</strong><em>Eldermere · Central rule · Forests</em></span></a>
+          <a class="map-region map-region-fairborne" href="house-fairborne.html" aria-label="Explore House Fairborne and its southern territory"><span><small>Southern territory</small><strong>House Fairborne</strong><em>Valoria · Medicine · Preservation</em></span></a>
+          <a class="map-region map-region-solas" href="house-solas.html" aria-label="Explore House Solas and its eastern territory"><span><small>Eastern territory</small><strong>House Solas</strong><em>Solrean · Volcanic lands · Dormant seat</em></span></a>
+          <a class="map-location map-location-eldermere" href="house-blackbriar.html#eldermere" aria-label="Explore Eldermere"><span class="map-location-dot" aria-hidden="true"></span><span class="map-location-label"><strong>Eldermere</strong>Political centre</span></a>
+          <a class="map-location map-location-elyndor" href="house-viremont.html#elyndor" aria-label="Explore Elyndor"><span class="map-location-dot" aria-hidden="true"></span><span class="map-location-label"><strong>Elyndor</strong>Viremont seat</span></a>
+          <a class="map-location map-location-valoria" href="house-fairborne.html#valoria" aria-label="Explore Valoria"><span class="map-location-dot" aria-hidden="true"></span><span class="map-location-label"><strong>Valoria</strong>Fairborne capital</span></a>
+          <a class="map-location map-location-solrean" href="house-solas.html#solrean" aria-label="Explore Solrean"><span class="map-location-dot" aria-hidden="true"></span><span class="map-location-label"><strong>Solrean</strong>Solas capital</span></a>
+          <button type="button" class="map-hd-button" data-lightbox="assets/worlds/the-hunt/political-map.png" data-title="The Four Territories — Political Map" aria-label="Open the complete political map in high resolution">Open full HD map <span aria-hidden="true">↗</span></button>
+        </div>
+        <noscript><p>Interactive map controls require JavaScript. You can still explore the territories through the House archives below.</p></noscript>
       </section>
-
       <section class="houses atlas-houses section">
-        <div class="section-heading"><div><p class="section-kicker">The ruling bloodlines</p><h2>Choose a<br /><em>House archive.</em></h2></div><p>Each House carries a gift, a political identity and a history that survived more faithfully as law than truth.</p></div>
+        <div class="section-heading"><div><p class="section-kicker">The ruling bloodlines</p><h2>Four Houses.<br /><em>Four forms of power.</em></h2></div><p>A House is both a ruling family and a political institution. Each governs its own territory, carries a distinct inherited gift, and protects a version of history shaped by its own interests.</p></div>
         <div class="house-portal-grid">
-          <a class="house-portal blackbriar-portal" href="house-blackbriar.html"><span class="house-roman">I</span><div><small>Control · Inland crown</small><strong>Blackbriar</strong><p>The Alpha King’s House. Forested, severe and administratively powerful.</p></div><b>Enter archive ↗</b></a>
-          <a class="house-portal viremont-portal" href="house-viremont.html"><span class="house-roman">II</span><div><small>Reason · Western sea</small><strong>Viremont</strong><p>Navy-and-gold strategists built on commerce, persuasion and controlled access.</p></div><b>Enter archive ↗</b></a>
-          <a class="house-portal fairborne-portal" href="house-fairborne.html"><span class="house-roman">III</span><div><small>Victory · Southern valleys</small><strong>Fairborne</strong><p>Preservation, medicine and immaculate institutions over a fractured claim.</p></div><b>Enter archive ↗</b></a>
-          <a class="house-portal solas-portal" href="house-solas.html"><span class="house-roman">IV</span><div><small>Warmth · Eastern coast</small><strong>Solas</strong><p>A dormant House whose abandoned seat recognises no living owner.</p></div><b>Enter archive ↗</b></a>
+          <a class="house-portal blackbriar-portal" href="house-blackbriar.html"><span class="house-roman">I</span><div><small>Control · Inland territory · Central rule</small><strong>Blackbriar</strong><p>The most politically powerful House and the current centre of werewolf government. Blackbriar rules through administration, discipline, and an old claim to the lost title of Alpha King.</p></div><b>Explore Blackbriar ↗</b></a>
+          <a class="house-portal viremont-portal" href="house-viremont.html"><span class="house-roman">II</span><div><small>Reason · Western territory · Commerce</small><strong>Viremont</strong><p>A wealthy coastal House built on strategy, business, medicine, and carefully controlled access. Its polished institutions hide a bloodline held together by pressure and secrecy.</p></div><b>Explore Viremont ↗</b></a>
+          <a class="house-portal fairborne-portal" href="house-fairborne.html"><span class="house-roman">III</span><div><small>Victory · Southern territory · Preservation</small><strong>Fairborne</strong><p>A House associated with medicine, preservation, and immaculate public institutions. Behind its refined image lies a fractured succession and a claim that may no longer belong to its rulers.</p></div><b>Explore Fairborne ↗</b></a>
+          <a class="house-portal solas-portal" href="house-solas.html"><span class="house-roman">IV</span><div><small>Warmth · Eastern territory · Dormant bloodline</small><strong>Solas</strong><p>Once the fourth ruling House, Solas now stands abandoned. Its territory remains, but its ancestral seat refuses to recognise any living claimant as its rightful heir.</p></div><b>Explore Solas ↗</b></a>
         </div>
       </section>
-
       <section class="atlas-directory section">
-        <div class="section-heading light-heading"><div><p class="section-kicker">Begin exploring</p><h2>Places with<br /><em>stories inside.</em></h2></div><p>The first complete location archives belong to Blackbriar and Viremont. Every plate opens at its original HD resolution.</p></div>
-        <div class="atlas-feature-grid">
-          <a class="atlas-feature" href="house-blackbriar.html#locations"><img src="assets/worlds/the-hunt/blackbriar/eldermere-city.png" alt="Eldermere city atlas map" /><span><small>Blackbriar capital</small><strong>Eldermere</strong><i>Explore ↗</i></span></a>
-          <a class="atlas-feature" href="house-viremont.html#locations"><img src="assets/worlds/the-hunt/viremont/territory.png" alt="Viremont territory atlas map" /><span><small>Viremont territory</small><strong>Elyndor</strong><i>Explore ↗</i></span></a>
+        <div class="section-heading light-heading"><div><p class="section-kicker">Cities · Territories · Estates</p><h2>Places where power<br /><em>becomes personal.</em></h2></div><p>Each ruling House is rooted in a distinct territory shaped by its geography, institutions, inherited power, and political history. Begin with the four capitals, then descend into estates, forests, universities, corporate districts, and places ordinary humans were never meant to notice.</p></div>
+        <div class="house-portal-grid territory-portal-grid">
+          <a class="house-portal blackbriar-portal" href="house-blackbriar.html#locations"><span class="house-roman">I</span><div><small>Inland capital · Central government</small><strong>Eldermere</strong><p>The political centre of modern werewolf society and the capital of Blackbriar territory. Its skyline conceals House headquarters, private clinics, Asterfell University, guarded estates, and institutions older than their glass façades.</p></div><b>Enter Eldermere ↗</b></a>
+          <a class="house-portal viremont-portal" href="house-viremont.html#locations"><span class="house-roman">II</span><div><small>Western coast · Trade · Sea access</small><strong>Elyndor</strong><p>The principal city of Viremont territory, sheltered between mountains and the western sea. Commerce, medicine, private wealth, and controlled access shape every polished district.</p></div><b>Enter Elyndor ↗</b></a>
+          <a class="house-portal fairborne-portal" href="house-fairborne.html#locations"><span class="house-roman">III</span><div><small>Southern valleys · Medicine · Institutions</small><strong>Valoria</strong><p>The refined centre of Fairborne territory, known for its medical institutions, preserved landscapes, formal estates, and public beauty cultivated with almost suspicious precision.</p></div><b>Enter Valoria ↗</b></a>
+          <a class="house-portal solas-portal" href="house-solas.html#locations"><span class="house-roman">IV</span><div><small>Eastern coast · Volcanic land · Abandoned seat</small><strong>Solrean</strong><p>The eastern capital of a territory whose ruling bloodline has fallen silent. Geothermal districts, golden forests, coastal roads, and the abandoned Solas estate remain without a recognised heir.</p></div><b>Enter Solrean ↗</b></a>
         </div>
       </section>
-
-      <section class="archive-note section">
-        <p class="section-kicker">Archive protocol</p>
-        <h2>Some truths remain<br /><em>off the public shelves.</em></h2>
-        <p>Bot-specific endings, unrevealed bloodlines and author-only succession records are deliberately excluded from this public atlas. A beautiful archive is still allowed to keep a secret.</p>
+      <section class="atlas-directory section">
+        <div class="section-heading"><div><p class="section-kicker">Blackbriar · Featured records</p><h2>Begin at the<br /><em>centre of rule.</em></h2></div><p>Eldermere and the surrounding Blackbriar lands contain the most complete public records currently available in the atlas.</p></div>
+        <div class="atlas-feature-grid">
+          <a class="atlas-feature" href="house-blackbriar.html#eldermere"><img loading="lazy" src="assets/worlds/the-hunt/blackbriar/eldermere-city.png" alt="Illustrated atlas map of Eldermere" /><span><small>Blackbriar territory · Political capital</small><strong>Eldermere</strong><i>Explore the city ↗</i></span></a>
+          <a class="atlas-feature" href="house-blackbriar.html#blackbriar-estate"><img loading="lazy" src="assets/worlds/the-hunt/blackbriar/blackbriar-estate.png" alt="Illustrated map of Blackbriar Estate" /><span><small>House seat · Royal grounds</small><strong>Blackbriar Estate</strong><i>Enter the estate ↗</i></span></a>
+          <a class="atlas-feature" href="house-blackbriar.html#asterfell"><img loading="lazy" src="assets/worlds/the-hunt/blackbriar/asterfell-university.png" alt="Asterfell University at blue hour" /><span><small>Private academy · Four territories</small><strong>Asterfell University</strong><i>Explore the campus ↗</i></span></a>
+          <a class="atlas-feature" href="house-blackbriar.html#moon-hall"><img loading="lazy" src="assets/worlds/the-hunt/blackbriar/moon-hall.png" alt="Moon Hall, a sacred open-air ritual site" /><span><small>Sacred site · Oaths · Rites</small><strong>Moon Hall</strong><i>Approach the sacred grounds ↗</i></span></a>
+        </div>
       </section>
+      <section class="archive-note section">
+        <p class="section-kicker">Password protected · Restricted records</p>
+        <h2>Some truths were buried.<br /><em>Not all stayed silent.</em></h2>
+        <p>The official history of The Hunt is incomplete. Bloodlines were erased, memories were altered, sacred traditions became laws, and powerful families preserved only the versions of the past that kept them in control.</p>
+        <p>The restricted archive gathers disputed accounts, concealed routes, private properties, fragmented documents, and secrets revealed gradually through the characters’ stories.</p>
+        <p>Entry requires one very simple answer. Dollie has been advised that this does not qualify as serious security. Dollie has ignored the complaint.</p>
+        <a class="atlas-button" href="hunt-secrets.html">Approach the restricted shelves <span aria-hidden="true">↗</span></a>
+      </section>
+      <section class="return-link section"><a href="worlds.html">Return to all worlds <span aria-hidden="true">↗</span></a></section>
     </main>
-
-    <dialog class="image-lightbox" aria-label="HD atlas viewer">
-      <div class="lightbox-bar"><p></p><div><a href="#" download>Download HD</a><button type="button" aria-label="Close image viewer">×</button></div></div>
-      <div class="lightbox-stage"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" /></div>
-    </dialog>
-
-    <footer><a class="brand" href="index.html"><span class="brand-mark">D</span><span>Dollie World</span></a><p>“The most beautiful dreams come from pain.”</p><span>© <span id="year"></span> Dollie World · Please do not release the characters from the basement</span></footer>
+    <dialog class="image-lightbox" aria-label="HD atlas viewer"><div class="lightbox-bar"><p></p><div><a href="#" download>Download HD</a><button type="button" aria-label="Close image viewer">×</button></div></div><div class="lightbox-stage"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" /></div></dialog>
+    <footer><a class="brand" href="index.html"><span class="brand-mark">D</span><span>The Dream Library</span></a><p>“The most beautiful dreams come from pain.”</p><span>© <span id="year"></span> The Dream Library · Please do not release the characters from the basement</span></footer>
     <script src="script.js"></script>
   </body>
 </html>
